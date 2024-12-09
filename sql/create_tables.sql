@@ -86,4 +86,6 @@ create table prescriptions (
  foreign key (medication_id) references medications (medication_id)
 );
 
+ alter table rooms add constraint Check_room_number check(room_number>0);
  
+ alter table doctors add constraint unique (email) ;
