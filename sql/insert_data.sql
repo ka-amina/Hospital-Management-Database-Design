@@ -9,6 +9,7 @@ INSERT INTO departements VALUES (7, 'Urology', 'Fourth Floor');
 INSERT INTO departements VALUES (8, 'Gastroenterology', 'Second Floor');
 INSERT INTO departements VALUES (9, 'Dermatology', 'Third Floor');
 INSERT INTO departements VALUES (10, 'Psychiatry', 'First Floor');
+INSERT INTO departements VALUES (11, 'Oncology', 'First Floor');
 
 -- insere les donner dans la table rooms
 INSERT INTO rooms  VALUES (1, '101', 'General', 1);
@@ -58,6 +59,16 @@ INSERT INTO doctors VALUES (7, 'Emma', 'Wilson', 'Dermatologist', '555-1357', 'e
 INSERT INTO doctors VALUES (8, 'Michael', 'Brown', 'Psychiatrist', '555-9876', 'michael.brown@clinic.com', 8);
 INSERT INTO doctors VALUES (9, 'Sophia', 'Martinez', 'Gynecologist', '555-3690', 'sophia.martinez@clinic.com', 9);
 INSERT INTO doctors VALUES (10, 'Daniel', 'Chen', 'Urologist', '555-7410', 'daniel.chen@clinic.com', 10);
+INSERT INTO doctors VALUES (11, 'Laura', 'Adams', 'Radiologist', '555-2222', 'laura.adams@clinic.com', 6);
+INSERT INTO doctors VALUES (12, 'Olivia', 'Carter', 'Cardiologist', '555-3333', 'olivia.carter@clinic.com', 1);
+INSERT INTO doctors VALUES (13, 'William', 'Evans', 'Neurologist', '555-4444', 'william.evans@clinic.com', 2);
+INSERT INTO doctors VALUES (14, 'Amelia', 'Green', 'Pediatrician', '555-5555', 'amelia.green@clinic.com', 4);
+INSERT INTO doctors VALUES (15, 'Ethan', 'White', 'Orthopedic Surgeon', '555-6666', 'ethan.white@clinic.com', 3);
+INSERT INTO doctors VALUES (16, 'Isabella', 'Walker', 'Gynecologist', '555-7777', 'isabella.walker@clinic.com', 9);
+INSERT INTO doctors VALUES (17, 'Mason', 'Hall', 'Urologist', '555-8888', 'mason.hall@clinic.com', 7);
+INSERT INTO doctors VALUES (18, 'Sophia', 'Robinson', 'Dermatologist', '555-9999', 'sophia.robinson@clinic.com', 5);
+INSERT INTO doctors VALUES (19, 'Jacob', 'Wright', 'Psychiatrist', '555-0000', 'jacob.wright@clinic.com', 8);
+INSERT INTO doctors VALUES (20, 'Ava', 'Perez', 'Emergency Physician', '555-1234', 'ava.perez@clinic.com', 6);
 
 -- insere les donner dans la table patients
 INSERT INTO patients VALUES (1, 'Emily', 'Clark', 'Female', '1990-05-20', '9876543210', 'emily.clark@example.com', '123 Main Street');
@@ -70,6 +81,19 @@ INSERT INTO patients VALUES (7, 'Liam', 'Robinson', 'Male', '1993-04-20', '88877
 INSERT INTO patients VALUES (8, 'Sophia', 'Thompson', 'Female', '1975-03-15', '7776665554', 'sophia.thompson@outlook.com', '32 Walnut Avenue');
 INSERT INTO patients VALUES (9, 'Olivia', 'Anderson', 'Female', '1997-09-05', '6665554443', 'olivia.anderson@gmail.com', '11 Elm Boulevard');
 INSERT INTO patients VALUES (10, 'Ethan', 'Lopez', 'Male', '1988-01-22', '5554443332', 'ethan.lopez@hotmail.com', '56 Birch Lane');
+INSERT INTO patients VALUES (11, 'Liam', 'Carter', 'Male', '2002-03-15', '555-5432', NULL, '12 Forest Avenue, Greenfield');
+INSERT INTO patients VALUES (12, 'Sophia', 'Evans', 'Female', '2003-06-22', '555-6543', 'sophia.evans@email.com', '34 Maple Street, Hillside');
+INSERT INTO patients VALUES (13, 'Ethan', 'Bennett', 'Male', '2005-11-08', '555-7654', 'ethan.bennett@email.com', '56 Oak Avenue, Riverwood');
+INSERT INTO patients VALUES (14, 'Ava', 'Parker', 'Female', '2001-07-19', '555-8765', 'ava.parker@email.com', '78 Birch Lane, Meadowview');
+INSERT INTO patients VALUES (15, 'Noah', 'Brooks', 'Male', '2004-02-25', '555-9876', 'noah.brooks@email.com', '90 Cedar Road, Seaview');
+INSERT INTO patients VALUES (16, 'Isabella', 'Murphy', 'Female', '2006-12-13', '555-0987', 'isabella.murphy@email.com', '23 Elm Street, Countryside');
+INSERT INTO patients VALUES (17, 'Oliver', 'Gray', 'Male', '2007-04-05', '555-1235', 'oliver.gray@email.com', '45 Pine Drive, Hilltop');
+INSERT INTO patients VALUES (18, 'Mia', 'Harris', 'Female', '2003-10-29', '555-2345', 'mia.harris@email.com', '67 Willow Lane, Sunnydale');
+INSERT INTO patients VALUES (19, 'Lucas', 'Morgan', 'Male', '2001-08-14', '555-3456', 'lucas.morgan@email.com', '89 Redwood Road, Valleyfield');
+INSERT INTO patients VALUES (20, 'Charlotte', 'Bell', 'Female', '2002-09-22', '555-4567', 'charlotte.bell@email.com', '10 Aspen Street, Lakeside');
+INSERT INTO patients VALUES (21, 'John', 'Doe', 'Male', '1990-05-15', '123-456-7890', NULL, '123 Main St');
+INSERT INTO patients VALUES (22, 'John', 'Doe', 'Male', '1990-05-15', '123-456-7890', NULL, '123 Main St');
+
 
 -- insere les donner dans la table addmissions
 INSERT INTO addmissions VALUES (1, 1, 1, '2024-12-01', NULL);
@@ -77,6 +101,28 @@ INSERT INTO addmissions VALUES (2, 2, 2, '2024-11-20', '2024-12-05');
 INSERT INTO addmissions VALUES (3, 3, 3, '2024-12-03', NULL);
 INSERT INTO addmissions VALUES (4, 4, 4, '2024-12-04', '2024-12-10');
 INSERT INTO addmissions VALUES (5, 5, 5, '2024-12-05', NULL);
+INSERT INTO addmissions VALUES (6, 6, 7, '2024-11-01', NULL);
+INSERT INTO addmissions VALUES (7, 7, 8, '2024-10-15', '2024-11-10');
+INSERT INTO addmissions VALUES (8, 8, 9, '2024-12-01', NULL);
+INSERT INTO addmissions VALUES (9, 9, 10, '2024-11-25', NULL);
+INSERT INTO addmissions VALUES (10, 10, 10, '2024-12-03', '2024-12-06');
+INSERT INTO addmissions VALUES (11, 2, 2, '2024-11-20', '2024-12-05');
+INSERT INTO addmissions VALUES (12, 3, 3, '2024-12-03', NULL);
+INSERT INTO addmissions VALUES (13, 4, 4, '2024-12-04', '2024-12-10');
+INSERT INTO addmissions VALUES (14, 5, 5, '2024-12-05', NULL);
+INSERT INTO addmissions VALUES (15, 6, 6, '2024-12-06', '2024-12-08');
+INSERT INTO addmissions VALUES (16, 7, 7, '2024-12-07', NULL);
+INSERT INTO addmissions VALUES (17, 8, 8, '2024-12-02', '2024-12-07');
+INSERT INTO addmissions VALUES (18, 9, 9, '2024-12-01', NULL);
+INSERT INTO addmissions VALUES (19, 10, 10, '2024-12-03', '2024-12-06');
+INSERT INTO addmissions VALUES (20, 1, 1, '2000-05-15', '2000-05-20');
+INSERT INTO addmissions VALUES (21, 2, 2, '2005-08-10', '2005-08-18');
+INSERT INTO addmissions VALUES (22, 3, 3, '2010-03-25', '2010-03-30');
+INSERT INTO addmissions VALUES (23, 4, 4, '2015-07-14', NULL);
+INSERT INTO addmissions VALUES (24, 5, 5, '2018-12-01', '2018-12-10');
+INSERT INTO addmissions VALUES (25, 6, 6, '2019-01-20', NULL);
+INSERT INTO addmissions VALUES (26, 7, 7, '2020-04-05', '2020-04-12');
+INSERT INTO addmissions VALUES (27, 8, 8, '2021-11-11', '2021-11-15');
 
 -- insere les donner dans la table appointements
 INSERT INTO appointements VALUES (1, '2024-12-10', '10:30:00', 1, 1, 'Routine Checkup');
