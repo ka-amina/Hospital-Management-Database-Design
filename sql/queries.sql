@@ -42,6 +42,13 @@ where addmission_date  between '2024-12-01' and '2024-12-7' order by addmission_
 -- 9. Conditional Expressions : Nommer les catégories d'âge des patients Ajoutez une colonne
 --  catégorisant les patients en "Enfant", "Adulte", ou "Senior" selon leur âge.
 alter table patients add column category enum('Enfant', 'Adulte', 'Senior');
+UPDATE patients
+SET category = CASE
+    when TIMESTAMPDIFF(YEAR, date_of_birth, NOW()) <= 18 then 'Enfant'
+    when TIMESTAMPDIFF(YEAR, date_of_birth, NOW()) > 18 and TIMESTAMPDIFF(YEAR, date_of_birth, NOW()) <= 50 then 'Adulte'
+    when TIMESTAMPDIFF(YEAR, date_of_birth, NOW()) > 50 then 'Senior'
+    ELSE NULL
+END;
 
 -- 10. Aggregate Functions : Nombre total de rendez-vous Comptez le nombre total de rendez-vous enregistrés.
  
@@ -52,7 +59,8 @@ select  departement_name, count(*) as nombre_de_médecins from doctors
 join departements on doctors.departement_id = departements.departement_id
 group by departement_name;
 -- 12. AVG : Âge moyen des patients Calculez l'âge moyen des patients.
-select AVG()
+select AVG(TIMESTAMPDIFF(YEAR, date_of_birth, NOW())) as moyenne_age from patients;
+
 
 -- 13. MAX : Dernier rendez-vous Trouvez la date et l'heure du dernier rendez-vous enregistré.
  
@@ -66,7 +74,7 @@ select sum(
 ) AS total_admissions from addmissions group by room_id;
 
 -- 15. Constraints : Vérifier les patients sans e-mail Récupérez tous les patients dont le champ email est vide.
-select * from patients where email is NULl
+select * from patients where email is NULL
 
 -- 16. Jointure : Liste des rendez-vous avec noms des médecins et patients Récupérez 
 -- les rendez-vous avec les noms des médecins et des patients.
@@ -95,3 +103,45 @@ HAVING all_patients >= 2;
 create view admissions_actives as 
 select * from addmissions 
 where discharge_date is null ;
+
+-- Questions bonus pour les jointures:
+
+-- Bonus 2 : Liste des rendez-vous par département Récupérez la liste des rendez-vous avec les départements associés.
+select departement_name , addmission_date 
+from departements
+join doctors on departements.departement_id = doctors.departement_id
+join appointements on doctors.doctor_id = appointements.doctor_id
+join patients on appointements.patient_id =  patients.patient_id
+join addmissions on   addmissions.patient_id = patients.patient_id
+
+-- Bonus 3 : Médicaments prescrits par médecin Listez les médicaments prescrits par chaque médecin.
+select concat(patients.first_name, ' ', patients.last_name) as patient_name ,
+  concat(doctors.first_name, ' ', doctors.last_name) as doctor, 
+  medication_name, 
+  dosage_instructions 
+from prescriptions
+join doctors on doctors.doctor_id = prescriptions.doctor_id
+join patients on prescriptions.patient_id = patients.patient_id
+join medications on prescriptions.medication_id = medications.medication_id
+
+-- Bonus 4 : Admissions et leurs chambres associées Récupérez les informations des admissions 
+-- et des chambres où les patients sont placés.
+select concat(patients.first_name, ' ', patients.last_name) as patient_name ,
+  addmission_date, discharge_date, room_number
+from addmissions
+join rooms on addmissions.room_id = rooms.room_id
+join patients on addmissions.patient_id = patients.patient_id
+where addmissions.discharge_date is null
+
+-- Bonus 5 : Statistiques des patients par département Comptez 
+-- le nombre de patients associés à chaque département via leurs admissions.
+
+select departement_name , count(patients.patient_id) as nombre_des_patients
+from departements
+join doctors on doctors.departement_id = departements.departement_id
+join appointements on doctors.doctor_id = appointements.doctor_id
+join patients on appointements.patient_id = patients.patient_id
+join addmissions on addmissions.patient_id = patients.patient_id
+group by departement_name
+
+
