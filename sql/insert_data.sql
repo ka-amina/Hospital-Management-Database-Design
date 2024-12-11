@@ -18,7 +18,6 @@ INSERT INTO rooms  VALUES (3, '103', 'ICU', 0);
 INSERT INTO rooms  VALUES (4, '104', 'General', 1);
 INSERT INTO rooms  VALUES (5, '105', 'Private', 0);
 INSERT INTO rooms  VALUES (6, '106', 'ICU', 1);
-INSERT INTO rooms  VALUES (6, '106', 'ICU', 1);
 INSERT INTO rooms VALUES (7, '401', 'Private', 1);
 INSERT INTO rooms VALUES (8, '402', 'General', 1);
 INSERT INTO rooms VALUES (9, '501', 'ICU', 0);

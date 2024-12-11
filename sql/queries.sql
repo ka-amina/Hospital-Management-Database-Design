@@ -3,11 +3,11 @@
 -- né le 15 juillet 1990, de sexe masculin, avec le numéro de téléphone "1234567890".
 
 insert into patients 
-values (11,'Alex',  'Johnson', '1990-07-15', 'Male', '1234567890', NULL, NULL)
+values (23,'Alex',  'Johnson', 'Male', '1990-07-15', '1234567890', NULL, NULL);
 
 -- 2. SELECT Statement : Récupérer tous les départements:
 -- Récupérez tous les départements avec leurs emplacements.
-select * from departements
+select * from departements;
 
 -- 3. ORDER BY Clause : Trier les patients par date de naissance Listez tous les patients,
 --  triés par date de naissance dans l'ordre croissant.
@@ -41,6 +41,7 @@ where addmission_date  between '2024-12-01' and '2024-12-7' order by addmission_
 
 -- 9. Conditional Expressions : Nommer les catégories d'âge des patients Ajoutez une colonne
 --  catégorisant les patients en "Enfant", "Adulte", ou "Senior" selon leur âge.
+SET SQL_SAFE_UPDATES = 0;
 alter table patients add column category enum('Enfant', 'Adulte', 'Senior');
 UPDATE patients
 SET category = CASE
@@ -58,6 +59,7 @@ select count(*) as nbr_total_de_rendez_vous from appointements;
 select  departement_name, count(*) as nombre_de_médecins from doctors
 join departements on doctors.departement_id = departements.departement_id
 group by departement_name;
+
 -- 12. AVG : Âge moyen des patients Calculez l'âge moyen des patients.
 select AVG(TIMESTAMPDIFF(YEAR, date_of_birth, NOW())) as moyenne_age from patients;
 
@@ -74,7 +76,7 @@ select sum(
 ) AS total_admissions from addmissions group by room_id;
 
 -- 15. Constraints : Vérifier les patients sans e-mail Récupérez tous les patients dont le champ email est vide.
-select * from patients where email is NULL
+select * from patients where email is NULL;
 
 -- 16. Jointure : Liste des rendez-vous avec noms des médecins et patients Récupérez 
 -- les rendez-vous avec les noms des médecins et des patients.
@@ -86,7 +88,7 @@ join doctors on doctors.doctor_id=appointements.doctor_id
 join patients on patients.patient_id=patients.patient_id;
 
 -- 17. DELETE : Supprimer les rendez-vous avant 2024 Supprimez tous les rendez-vous programmés avant 2024.
-delete from addmissions where addmission_date< '2024-01-01'
+delete from addmissions where addmission_date< '2024-01-01';
 
 -- 18. UPDATE : Modifier un département Changez le nom du département "Oncology" en "Cancer Treatment".
 UPDATE departements 
@@ -112,7 +114,7 @@ from departements
 join doctors on departements.departement_id = doctors.departement_id
 join appointements on doctors.doctor_id = appointements.doctor_id
 join patients on appointements.patient_id =  patients.patient_id
-join addmissions on   addmissions.patient_id = patients.patient_id
+join addmissions on   addmissions.patient_id = patients.patient_id;
 
 -- Bonus 3 : Médicaments prescrits par médecin Listez les médicaments prescrits par chaque médecin.
 select concat(patients.first_name, ' ', patients.last_name) as patient_name ,
@@ -122,7 +124,7 @@ select concat(patients.first_name, ' ', patients.last_name) as patient_name ,
 from prescriptions
 join doctors on doctors.doctor_id = prescriptions.doctor_id
 join patients on prescriptions.patient_id = patients.patient_id
-join medications on prescriptions.medication_id = medications.medication_id
+join medications on prescriptions.medication_id = medications.medication_id;
 
 -- Bonus 4 : Admissions et leurs chambres associées Récupérez les informations des admissions 
 -- et des chambres où les patients sont placés.
@@ -131,7 +133,7 @@ select concat(patients.first_name, ' ', patients.last_name) as patient_name ,
 from addmissions
 join rooms on addmissions.room_id = rooms.room_id
 join patients on addmissions.patient_id = patients.patient_id
-where addmissions.discharge_date is null
+where addmissions.discharge_date is null;
 
 -- Bonus 5 : Statistiques des patients par département Comptez 
 -- le nombre de patients associés à chaque département via leurs admissions.
@@ -142,6 +144,6 @@ join doctors on doctors.departement_id = departements.departement_id
 join appointements on doctors.doctor_id = appointements.doctor_id
 join patients on appointements.patient_id = patients.patient_id
 join addmissions on addmissions.patient_id = patients.patient_id
-group by departement_name
+group by departement_name;
 
 
